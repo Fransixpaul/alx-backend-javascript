@@ -1,15 +1,15 @@
-const fs = require("fs");
+const fs = require('fs');
 
 function countStudents(path) {
   let data;
   try {
-    data = fs.readFileSync(path, "utf8");
+    data = fs.readFileSync(path, 'utf8');
   } catch (err) {
-    throw new Error("Cannot load the database");
+    throw new Error('Cannot load the database');
   }
 
-  const lines = data.split("\n").filter((line) => line.trim() !== ""); // Remove empty lines
-  const students = lines.map((line) => line.split(","));
+  const lines = data.split('\n').filter((line) => line.trim() !== ''); // Remove empty lines
+  const students = lines.map((line) => line.split(','));
 
   const fields = {}; // Object to store students grouped by field
   let totalStudents = 0;
@@ -33,7 +33,7 @@ function countStudents(path) {
   for (const [field, names] of Object.entries(fields)) {
     console.log(
       `Number of students in ${field}: ${names.length}. List: ${names.join(
-        ", "
+        ', '
       )}`
     );
   }
