@@ -4,7 +4,7 @@ function countStudents(path) {
   let data;
   try {
     data = fs.readFileSync(path, 'utf8');
-  } catch {
+  } catch (err) {
     throw new Error('Cannot load the database');
   }
 
@@ -16,7 +16,7 @@ function countStudents(path) {
 
   // Skip the header row (first row) and loop over the students
   for (let i = 1; i < students.length; i++) {
-    const [firstname, , , field] = students[i];  // Only extract the necessary values
+    const [firstname, lastname, age, field] = students[i];
     if (field) {
       totalStudents++;
       if (!fields[field]) {
